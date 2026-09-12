@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(PostNotFoundException.class)
-	public ResponseEntity<String> handlePostNotFound(
-			PostNotFoundException e) {
+    @ExceptionHandler(PostNotFoundException.class)
+    public ResponseEntity<String> handlePostNotFound(PostNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
 
-		return ResponseEntity
-				.status(404)
-				.body(e.getMessage());
-	}
+    @ExceptionHandler(CommentNotFoundException.class)
+    public ResponseEntity<String> handleCommentNotFound(CommentNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
 }
