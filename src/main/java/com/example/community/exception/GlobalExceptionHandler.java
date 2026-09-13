@@ -31,4 +31,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleCandidateNotFound(CandidateNotFoundException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
+    
+    @ExceptionHandler(HeartWalletNotFoundException.class)
+    public ResponseEntity<String> handleHeartWalletNotFound(HeartWalletNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
+
+    @ExceptionHandler(InsufficientHeartsException.class)
+    public ResponseEntity<String> handleInsufficientHearts(InsufficientHeartsException e) {
+        return ResponseEntity.status(409).body(e.getMessage());
+    }
+
+    @ExceptionHandler(DuplicateHeartWalletException.class)
+    public ResponseEntity<String> handleDuplicateHeartWallet(DuplicateHeartWalletException e) {
+        return ResponseEntity.status(409).body(e.getMessage());
+    }
 }

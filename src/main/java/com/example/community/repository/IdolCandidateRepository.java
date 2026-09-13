@@ -17,4 +17,15 @@ public interface IdolCandidateRepository
         where c.id = :id
     """)
     int incrementVoteCount(@Param("id") Long id);
+    
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("""
+        update IdolCandidate c
+        set c.voteCount = c.voteCount + :amount
+        where c.id = :id
+    """)
+    int incrementVoteCountBy(
+            @Param("id") Long id,
+            @Param("amount") long amount
+    );
 }
