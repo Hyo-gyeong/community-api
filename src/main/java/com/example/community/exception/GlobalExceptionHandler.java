@@ -26,4 +26,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlePostLikeNotFound(PostLikeNotFoundException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
+    
+    @ExceptionHandler(CandidateNotFoundException.class)
+    public ResponseEntity<String> handleCandidateNotFound(CandidateNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
 }
