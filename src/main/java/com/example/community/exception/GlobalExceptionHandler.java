@@ -16,4 +16,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleCommentNotFound(CommentNotFoundException e) {
         return ResponseEntity.status(404).body(e.getMessage());
     }
+    
+    @ExceptionHandler(DuplicatePostLikeException.class)
+    public ResponseEntity<String> handleDuplicatePostLike(DuplicatePostLikeException e) {
+        return ResponseEntity.status(409).body(e.getMessage());
+    }
+    
+    @ExceptionHandler(PostLikeNotFoundException.class)
+    public ResponseEntity<String> handlePostLikeNotFound(PostLikeNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
 }
